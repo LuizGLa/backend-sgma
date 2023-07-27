@@ -16,6 +16,6 @@ export class UserController {
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     return this.userService.updatePartial(+id, updateUserDto);
   }
-  //
+  
 
 }
