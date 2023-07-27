@@ -27,9 +27,9 @@ export class UserService {
 
 
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
-  }
+  //findOne(id: number) {
+    //return `This action returns a #${id} user`;
+  //}
 
 
   async updatePartial(id: number, {email, name, password}: UpdateUserDto) {
