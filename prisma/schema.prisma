@@ -11,8 +11,27 @@ datasource db {
 }
 
 model User {
-  id         Int       @id @default(autoincrement())
-  email      String    @unique
-  password   String
-  name       String
+  id           Int      @id @default(autoincrement())
+  email        String   @unique
+  password     String
+  name         String
+}
+
+model alunos {
+  id           Int      @id @default(autoincrement())
+  name         String   @db.Char(60)
+  cpf          String   @unique @db.Char(11)
+  date_birth   DateTime
+
+  modulos      modulos[]
+}
+
+model modulos {
+  id           Int      @id @default(autoincrement())
+  id_alunos    Int      
+  nota1        Float
+  nota2        Float
+  nota3        Float
+
+  alunos       alunos   @relation(fields: [id_alunos], references: [id])
 }
