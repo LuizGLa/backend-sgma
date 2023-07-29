@@ -8,12 +8,12 @@ export class AlunosService {
 
   constructor(private prisma: PrismaService) {}
 
-  async create({name, date_birth, cpf}: CreateAlunoDto) {
+  async create({name, dateBirth, cpf}: CreateAlunoDto) {
         
     return this.prisma.alunos.create({
         data: {
           name,
-          date_birth,
+          dateBirth,
           cpf
         }
 
@@ -22,12 +22,12 @@ export class AlunosService {
 
 
     async list() {
-      return this.prisma.user.findMany();
+      return this.prisma.alunos.findMany();
   }
 
 
   async show(id: number) {
-    return this.prisma.user.findUnique({
+    return this.prisma.alunos.findUnique({
         where: {
             id
         }
@@ -35,7 +35,7 @@ export class AlunosService {
 }
 
 
-async updatePartial(id: number, {name, date_birth, cpf}: UpdateAlunoDto) {
+async updatePartial(id: number, {name, dateBirth, cpf}: UpdateAlunoDto) {
 
   const data: any = {}
 
@@ -43,8 +43,8 @@ async updatePartial(id: number, {name, date_birth, cpf}: UpdateAlunoDto) {
     data.name
   }
 
-  if (date_birth) {
-    data.date_birth;
+  if (dateBirth) {
+    data.date_birth = new Date(dateBirth);
   }
 
 
@@ -54,7 +54,7 @@ async updatePartial(id: number, {name, date_birth, cpf}: UpdateAlunoDto) {
 
 
   return this.prisma.alunos.update({
-      data: {name, date_birth, cpf},
+      data: {name, dateBirth, cpf},
       where: {
           id
       }

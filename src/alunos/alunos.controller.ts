@@ -3,14 +3,15 @@ import { AlunosService } from './alunos.service';
 import { CreateAlunoDto } from './dto/create-aluno.dto';
 import { UpdateAlunoDto } from './dto/update-aluno.dto';
 
+
 @Controller('alunos')
 export class AlunosController {
   constructor(private readonly alunosService: AlunosService) {}
 
   @Post()
-    async create(@Body() data: CreateAlunoDto) {
-        return this.alunosService.create(data);
-    }
+  create(@Body() data: CreateAlunoDto) {
+    return this.alunosService.create(data);
+  }
 
     @Get()
     async list() {

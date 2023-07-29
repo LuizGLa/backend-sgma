@@ -1,7 +1,10 @@
-import { ApiProperty } from '@nestjs/swagger';
-import { IsDateString, IsString } from "class-validator";
 
-export class CreateAlunoDto {
+import { ApiProperty } from '@nestjs/swagger';
+import { IsDate, IsDateString, IsOptional, IsString } from "class-validator";
+import { Aluno } from '../entities/aluno.entity';
+import { Transform } from 'class-transformer';
+
+export class CreateAlunoDto extends Aluno{
 
     @IsString()
     name: string;
@@ -10,7 +13,8 @@ export class CreateAlunoDto {
     @IsString()
     cpf: string;
 
-    @IsDateString()
-    date_birth: string;
+    @IsDate()
+    @Transform(({ value }) => new Date(value))
+    dateBirth: Date;
 
 }
