@@ -27,11 +27,13 @@ model alunos {
 }
 
 model modulos {
-  id           Int      @id @default(autoincrement())
-  id_alunos    Int      
-  nota1        Float
-  nota2        Float
-  nota3        Float
+  
+  id           Int      @id @default(autoincrement())   
+  name         String   @db.Char(60)
+  nota1        Float?
+  nota2        Float?
+  nota3        Float?
+  id_alunos    Int  
 
-  alunos       alunos   @relation(fields: [id_alunos], references: [id])
+   alunos    alunos    @relation(fields: [id_alunos], references: [id])
 }

@@ -7,9 +7,9 @@ import { UpdateModuloDto } from './dto/update-modulo.dto';
 export class ModulosController {
   constructor(private readonly modulosService: ModulosService) {}
 
-  @Post()
-  create(@Body() createModuloDto: CreateModuloDto) {
-    return this.modulosService.create(createModuloDto);
+  @Post(':id_alunos')
+  create(@Param('id_alunos') id_alunos: number, @Body() createModuloDto: CreateModuloDto) {
+    return this.modulosService.create(id_alunos, createModuloDto);
   }
 
   @Get()

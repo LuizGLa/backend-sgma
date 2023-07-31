@@ -1,6 +1,6 @@
 
 import { ApiProperty } from '@nestjs/swagger';
-import { IsDate, IsDateString, IsOptional, IsString } from "class-validator";
+import { IsDate, IsString } from "class-validator";
 import { Aluno } from '../entities/aluno.entity';
 import { Transform } from 'class-transformer';
 
