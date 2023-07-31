@@ -5,7 +5,7 @@ import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class ModulosService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) { }
 
   async create(id_alunos: number, moduloData: any) {
     return this.prisma.modulos.create({
@@ -15,21 +15,41 @@ export class ModulosService {
       },
     });
   }
-  
 
-  findAll() {
-    return `This action returns all modulos`;
+
+  async findAll() {
+    return this.prisma.modulos.findMany();
   }
+
 
   findOne(id: number) {
-    return `This action returns a #${id} modulo`;
+    return this.prisma.modulos.findUnique({
+      where: {
+        id
+      }
+    });
   }
 
-  update(id: number, updateModuloDto: UpdateModuloDto) {
-    return `This action updates a #${id} modulo`;
+  update(id: number, { name, nota1, nota2, nota3 }: UpdateModuloDto) {
+    return this.prisma.modulos.update({
+      where: {
+        id
+      },
+      data: {
+        name,
+        nota1,
+        nota2,
+        nota3
+      }
+    })
+
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} modulo`;
+  async remove(id: number) {
+    return this.prisma.modulos.delete({
+      where: {
+        id
+      }
+    })
   }
 }

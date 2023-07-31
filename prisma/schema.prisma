@@ -21,7 +21,7 @@ model alunos {
   id           Int      @id @default(autoincrement())
   name         String   @db.Char(60)
   cpf          String   @unique @db.Char(11)
-  dateBirth   DateTime?@db.Date
+  dateBirth   DateTime? @db.Date
 
   modulos      modulos[]
 }

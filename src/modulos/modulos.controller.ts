@@ -9,6 +9,7 @@ export class ModulosController {
 
   @Post(':id_alunos')
   create(@Param('id_alunos') id_alunos: number, @Body() createModuloDto: CreateModuloDto) {
+    console.log(createModuloDto)
     return this.modulosService.create(id_alunos, createModuloDto);
   }
 
@@ -18,17 +19,19 @@ export class ModulosController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.modulosService.findOne(+id);
+  async findOne(@Param('id') id:number) {
+    return this.modulosService.findOne(id);
+    
+
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateModuloDto: UpdateModuloDto) {
+  update(@Param('id') id: number, @Body() updateModuloDto: UpdateModuloDto) {
     return this.modulosService.update(+id, updateModuloDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.modulosService.remove(+id);
+  remove(@Param('id') id: number) {
+    return this.modulosService.remove(id);
   }
 }

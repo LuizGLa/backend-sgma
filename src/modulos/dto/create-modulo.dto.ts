@@ -3,8 +3,6 @@ import { IsInt, IsNumber, Min, Max, IsNotEmpty, IsOptional, isString, IsString, 
 
 export class CreateModuloDto{
 
-    id?: number;
-
     @IsNotEmpty()
     @IsString()
     name: string;
