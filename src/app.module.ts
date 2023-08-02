@@ -8,15 +8,24 @@ import { APP_GUARD } from '@nestjs/core';
 import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
 import { AlunosModule } from './alunos/alunos.module';
 import { ModulosModule } from './modulos/modulos.module';
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
-  imports: [PrismaModule, UserModule, AuthModule, AlunosModule, ModulosModule],
+  imports: [
+    PrismaModule,
+    UserModule,
+    AuthModule,
+    AlunosModule,
+    ModulosModule,
+    HttpModule, // Adicionando o HttpModule
+  ],
   controllers: [AppController],
-  providers: [AppService,
-  {
-    provide: APP_GUARD,
-    useClass: JwtAuthGuard
-  }
-],
+  providers: [
+    AppService,
+    {
+      provide: APP_GUARD,
+      useClass: JwtAuthGuard,
+    },
+  ],
 })
 export class AppModule {}
