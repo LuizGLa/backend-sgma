@@ -9,6 +9,12 @@ import { IsPublic } from 'src/auth/decorators/is-public-decorator';
 export class AlunosController {
   constructor(private readonly alunosService: AlunosService) {}
 
+  @Get('count')
+  async contarAlunos(): Promise<{ total: number }> {
+    const totalAlunos = await this.alunosService.contarAlunos();
+    return { total: totalAlunos };
+  }
+
   @Post()
   create(@Body() data: CreateAlunoDto) {
     return this.alunosService.create(data);

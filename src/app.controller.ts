@@ -4,6 +4,7 @@ import { IsPublic } from './auth/decorators/is-public-decorator';
 import { User } from './user/entities/user.entity';
 import { CurrentUser } from './auth/decorators/current-user.decorator';
 
+@IsPublic()
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}

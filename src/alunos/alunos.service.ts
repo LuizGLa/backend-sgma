@@ -8,6 +8,11 @@ export class AlunosService {
 
   constructor(private prisma: PrismaService) {}
 
+  async contarAlunos(): Promise<number> {
+    const totalAlunos = await this.prisma.alunos.count();
+    return totalAlunos;
+  }
+
   async create({name, dateBirth, cpf}: CreateAlunoDto) {
         
     return this.prisma.alunos.create({
